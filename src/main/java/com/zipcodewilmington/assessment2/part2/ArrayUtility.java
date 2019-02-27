@@ -12,10 +12,9 @@ public class ArrayUtility {
     ArrayList<Integer> resultList;
 
     public Integer[] merge(Integer[] array1, Integer[] array2) {
-        List list = new ArrayList(Arrays.asList(array1));
-        list.addAll(Arrays.asList(array2));
-        list.toArray(result);
-        return result;
+       resultList.addAll(Arrays.asList(array1));
+       resultList.addAll(Arrays.asList(array2));
+       return resultList.toArray(result);
     }
 
     public Integer[] rotate(Integer[] array, Integer index) {
