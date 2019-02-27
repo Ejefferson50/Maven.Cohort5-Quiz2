@@ -22,7 +22,21 @@ public class ArrayUtility {
     }
 
     public Integer countOccurrence(Integer[] array1, Integer[] array2, Integer valueToEvaluate) {
-        return null;
+        int occurrences1 = 0;
+        int occurrences2 = 0;
+        for (int index = 0; index < array1.length; index++) {
+            if (array1[index] == valueToEvaluate) {
+                occurrences1 = occurrences1 + 1;
+            }
+        }
+
+        for (int index = 0; index < array2.length; index++) {
+            if (array2[index] == valueToEvaluate) {
+                occurrences2 = occurrences2 + 1;
+            }
+        }
+        return occurrences1 + occurrences2;
+
     }
 
     public Integer mostCommon(Integer[] array) {

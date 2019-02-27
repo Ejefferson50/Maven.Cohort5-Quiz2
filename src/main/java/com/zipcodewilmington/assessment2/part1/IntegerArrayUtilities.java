@@ -1,22 +1,23 @@
 package com.zipcodewilmington.assessment2.part1;
 
+import java.sql.Array;
 import java.util.Arrays;
 
 public class IntegerArrayUtilities {
     Boolean testBoo;
     Integer testInteger = 0;
-    Integer[] testArray;
+
     public Boolean hasEvenLength(Integer[] array) {
         testBoo = array.length % 2 == 0;
         return testBoo;
     }
 
     public Integer[] range(int start, int stop) {
+        Integer[] testArray = new Integer[stop];
+        for (int i = start; i < stop; i++){
+            testArray[i] = i;
 
-        for (int index = start; index < stop; index++){
-            testArray[index]++;
         }
-
         return testArray;
     }
 
