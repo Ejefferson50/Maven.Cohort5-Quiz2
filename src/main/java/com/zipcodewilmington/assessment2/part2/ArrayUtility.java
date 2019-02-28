@@ -5,21 +5,38 @@ import com.j256.ormlite.stmt.query.In;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
+import java.util.Collections;
 
 public class ArrayUtility {
     Integer[] result;
-    ArrayList<Integer> resultList;
+    ArrayList<Integer> resultPart1;
+    ArrayList<Integer> resultPart2;
 
     public Integer[] merge(Integer[] array1, Integer[] array2) {
-       resultList.addAll(Arrays.asList(array1));
-       resultList.addAll(Arrays.asList(array2));
-       return resultList.toArray(result);
+      ArrayList<Integer> resultPart1 = new ArrayList<>(Arrays.asList(array1));
+        ArrayList<Integer> resultPart2 = new ArrayList<>(Arrays.asList(array2));
+
+        resultPart1.addAll(resultPart2);
+        return resultPart1.toArray(new Integer[resultPart1.size()]);
+
     }
 
     public Integer[] rotate(Integer[] array, Integer index) {
-        return null;
-    }
+        Integer[] newArray = new Integer[array.length];
+
+        for(int i = array.length - 1; i >= 0; i-- ){
+            int newPositionOfIndex = i - index;
+            if (newPositionOfIndex >= 0 && newPositionOfIndex < array.length) {
+                newArray[newPositionOfIndex] = array[i];
+            }else if (newPositionOfIndex < 0)
+            { newArray[newPositionOfIndex + array.length] = array[i];
+            }
+            }
+        return newArray;
+        }
+
+
+
 
     public Integer countOccurrence(Integer[] array1, Integer[] array2, Integer valueToEvaluate) {
         int occurrences1 = 0;
@@ -39,7 +56,17 @@ public class ArrayUtility {
 
     }
 
-    public Integer mostCommon(Integer[] array) {
-        return null;
+    public static Integer mostCommon(Integer[] array) {
+        ArrayList<Integer> arrayList = new ArrayList<>(Arrays.asList(array));
+        Integer frequentOccurrences = arrayList.get(0);
+
+        for (Integer i : arrayList){
+            if(Collections.frequency(arrayList,i) > Collections.frequency(arrayList, frequentOccurrences)){
+                frequentOccurrences = arrayList.get(i);
+            }
+
+        }
+
+        return frequentOccurrences;
     }
 }
